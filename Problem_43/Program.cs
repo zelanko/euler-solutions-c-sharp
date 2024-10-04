@@ -1,4 +1,5 @@
 ﻿using Problem_43;
+
 long sum = 0;
 var myTop = Console.CursorTop;
 

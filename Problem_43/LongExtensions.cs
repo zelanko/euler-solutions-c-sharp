@@ -22,19 +22,19 @@ public static class StringExtensions
 
     public static bool IsSubstringDivisible(this string str)
     {
-        int i = Convert.ToInt32(str[1..3]);
+        int i = Convert.ToInt32(str[1..4]);
         if (i % 2 != 0) return false;
-        i = Convert.ToInt32(str[2..4]);
+        i = Convert.ToInt32(str[2..5]);
         if (i % 3 != 0) return false;
-        i = Convert.ToInt32(str[3..5]);
+        i = Convert.ToInt32(str[3..6]);
         if (i % 5 != 0) return false;
-        i = Convert.ToInt32(str[4..6]);
+        i = Convert.ToInt32(str[4..7]);
         if (i % 7 != 0) return false;
-        i = Convert.ToInt32(str[5..7]);
+        i = Convert.ToInt32(str[5..8]);
         if (i % 11 != 0) return false;
-        i = Convert.ToInt32(str[6..8]);
+        i = Convert.ToInt32(str[6..9]);
         if (i % 13 != 0) return false;
-        i = Convert.ToInt32(str[7..9]);
+        i = Convert.ToInt32(str[7..10]);
         if (i % 17 != 0) return false;
         return true;    
     }
