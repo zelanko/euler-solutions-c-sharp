@@ -1,32 +1,32 @@
 ﻿using Solver;
 
 List<long> pentagonals = [0];
+HashSet<long> pentagonalsLookup = [];
 
-for (long n = 1; n <= 1_000_000; n += 1)
+for (int n = 1; n <= 2_500_000; n += 1)
 {
-    long p = n.ToPentagonal();
+    long p = ((long)n).ToPentagonal();
     pentagonals.Add(p);
+    pentagonalsLookup.Add(p);
 }
 
-List<long> solutions = [];
-long d;
-for (var j = 1; j < pentagonals.Count; j += 1)
+for (int k = 2; k < pentagonals.Count; k += 1)
 {
-    long pj = pentagonals[j];
-    Console.Write($"{pj},");
-    for(var k = j + 1; k < pentagonals.Count; k += 1)
+    long pk = pentagonals[k];
+
+    for(var j = k - 1; j > 0; j -= 1)
     {
-        var pk = pentagonals[k]; 
-        if (pentagonals.Contains(pj + pk) && pentagonals.Contains(d = pk - pj))
+        long d;
+        var pj = pentagonals[j];
+        Console.CursorLeft = 0;
+        Console.Write($"({pj}, {pk})");
+        if (pentagonalsLookup.Contains(pj + pk) && pentagonalsLookup.Contains(d = pk - pj))
         {
-            solutions.Add(Math.Abs(d));
+            Console.WriteLine();
+            Console.WriteLine(d);
             break;
         }
     }
     
 }
 
-if (solutions.Count == 0)
-    Console.WriteLine("Did not find the qualifing pair. Probably increase the max value of n.");
-else
-    Console.WriteLine($"Found d to equal {solutions.Min()}");
